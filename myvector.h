@@ -40,6 +40,7 @@ class Vector{
                 grow();
             unchecked_append(val);
         }
+
         T front(){ return *data; }
         T back(){ return *(avail-1); }
 
@@ -47,14 +48,13 @@ class Vector{
         void pop_back(){ avail--; }
         
         void reserve(size_type n){
-            if (capacity() < n){
+            if (capacity() < n)
                 limit = data + n;
-            }
         }
         void resize(size_type n){ avail = data + n; }
         
         void assign(size_type n, const T& val){ create(n, val); }
-        constexpr void assign(const_iterator i, const_iterator j){ create(i, j); }
+        void assign(const_iterator i, const_iterator j){ create(i, j); }
 
     private:
         iterator data;

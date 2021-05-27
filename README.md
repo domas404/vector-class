@@ -1,7 +1,7 @@
 # Vector class
 
-Vector klasės realizacija.
-Šioje klasėje įgyvendintos 2-oje užduotyje naudotos std::vector funkcijos.
+* Vector klasės realizacija.
+* Šioje klasėje įgyvendintos 2-oje užduotyje naudotos std::vector funkcijos.
 ## *push_back* payginimas:
 Palyginimui naudojami 100 iteracijų laiko vidurkiai.
 
@@ -10,7 +10,7 @@ Palyginimui naudojami 100 iteracijų laiko vidurkiai.
 | std::vector                 | 4.985e-5 | 0.000369 | 0.002768  | 0.036885   | 0.299628    |
 | mano Vector                 | 1.995e-5 | 0.000289 | 0.001900  | 0.030270   | 0.215559    |
 
-## std::vector ir Vector palyginimas (v2.0)
+## *std::vector* ir Vector palyginimas (v2.0)
 Skaičiavimai atlikti su 100'000 elementų failu.
 
 |                                     | std::vector  | mano Vector  |
@@ -21,6 +21,11 @@ Skaičiavimai atlikti su 100'000 elementų failu.
 | Kietiakų rašymas į failą            | 0.423123     | 0.417823     |
 | Varguolių rašymas į failą           | 0.308549     | 0.296763     |
 | **Visas programos veikimo laikas:** | **1.614873** | **1.597195** |
+
+Atliktų atminties perskirstymų skaičius, pildant 100'000'000 elementų failą:
+
+* Naudojant std::vector - 27;
+* Naudojant Vector klasę - 27.
 ## Realizuoti metodai
 ### front() ir back()
         T front(){ return *data; }
