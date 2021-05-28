@@ -11,9 +11,7 @@ Vector<T>& Vector<T>::operator=(const Vector& rhs){
 
 template <class T>
 void Vector<T>::create(){
-    data = nullptr;
-    avail = nullptr;
-    limit = nullptr;
+    data = avail = limit = nullptr;
 }
 
 template <class T>
@@ -38,6 +36,20 @@ void Vector<T>::uncreate(){
         alloc.deallocate(data, limit - data);
     }
     data = limit = avail = nullptr;
+}
+
+template <class T>
+void Vector<T>::reserve(size_type n){
+    if (capacity() < n){
+        iterator new_data = alloc.allocate(n);
+        iterator new_avail = uninitialized_copy(data, avail, n);
+
+        uncreate();
+        
+        data = new_data;
+        avail = new_avail;
+        limit = data + n;
+    }
 }
 
 template <class T>

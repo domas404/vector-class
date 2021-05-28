@@ -31,11 +31,6 @@ Skaičiavimai atlikti su 100'000 elementų failu.
 ### front() ir back()
         T front(){ return *data; }
         T back(){ return *(avail-1); }
-### reserve()
-        void reserve(size_type n){
-            if (capacity() < n)
-                limit = data + n;
-        }
 ### clear()
         void clear(){ uncreate(); }
 ### pop_back()
@@ -43,6 +38,16 @@ Skaičiavimai atlikti su 100'000 elementų failu.
 ### assign()
         void assign(size_type n, const T& val){ create(n, val); }
         void assign(const_iterator i, const_iterator j){ create(i, j); }
+### reserve()
+        void Vector<T>::reserve(size_type n){
+        if (capacity() < n){
+                iterator new_data = alloc.allocate(n);
+                iterator new_avail = uninitialized_copy(data, avail, n);
+                uncreate();
+                data = new_data;
+                avail = new_avail;
+                limit = data + n;
+        }
 ### resize()
         void resize(size_type n){ avail = data + n; }
 ### push_back()
