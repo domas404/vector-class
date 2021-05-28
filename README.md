@@ -28,31 +28,11 @@ Skaičiavimai atlikti su 100'000 elementų failu.
 | **Visas programos veikimo laikas:** | **1.614873** | **1.597195** |
 
 ## Realizuoti metodai
-### front() ir back()
-        T front(){ return *data; }
-        T back(){ return *(avail-1); }
-### clear()
-        void clear(){ uncreate(); }
-### pop_back()
-        void pop_back(){ avail--; }
-### assign()
-        void assign(size_type n, const T& val){ create(n, val); }
-        void assign(const_iterator i, const_iterator j){ create(i, j); }
-### reserve()
-        void Vector<T>::reserve(size_type n){
-        if (capacity() < n){
-                iterator new_data = alloc.allocate(n);
-                iterator new_avail = uninitialized_copy(data, avail, n);
-                uncreate();
-                data = new_data;
-                avail = new_avail;
-                limit = data + n;
-        }
-### resize()
-        void resize(size_type n){ avail = data + n; }
-### push_back()
-        void push_back(const T& val){
-            if (avail == limit)
-                grow();
-            unchecked_append(val);
-        }
+* front()
+* back()
+* clear()
+* pop_back()
+* assign()
+* reserve()
+* resize()
+* push_back()

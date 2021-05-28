@@ -39,17 +39,15 @@ void Vector<T>::uncreate(){
 }
 
 template <class T>
-void Vector<T>::reserve(size_type n){
-    if (capacity() < n){
-        iterator new_data = alloc.allocate(n);
-        iterator new_avail = uninitialized_copy(data, avail, n);
+void Vector<T>::change_size(size_type n){
+    iterator new_data = alloc.allocate(n);
+    iterator new_avail = uninitialized_copy(data, avail, n);
 
-        uncreate();
-        
-        data = new_data;
-        avail = new_avail;
-        limit = data + n;
-    }
+    uncreate();
+
+    data = new_data;
+    avail = new_avail;
+    limit = data + n;
 }
 
 template <class T>

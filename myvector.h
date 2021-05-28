@@ -51,9 +51,17 @@ class Vector{
 
         void pop_back(){ avail--; }
         
-        void reserve(size_type n);
-        void resize(size_type n){ avail = data + n; }
-        
+        void reserve(size_type n){
+            if (capacity() < n)
+                change_size(n);
+        }
+        void resize(size_type n){
+            if (capacity() < n){
+                change_size(n);
+                uninitialized_fill(avail, limit, NULL);
+            }
+            else avail = data + n;
+        }
         void assign(size_type n, const T& val){ create(n, val); }
         void assign(const_iterator i, const_iterator j){ create(i, j); }
 
@@ -70,6 +78,7 @@ class Vector{
 
         void uncreate();
 
+        void change_size(size_type);
         void grow();
         void unchecked_append(const T&);
 };
